@@ -1,4 +1,4 @@
-# AppRouter Swift Package - README
+# AppRouter Swift Package
 
 ## Overview
 
@@ -46,8 +46,9 @@ public typealias Router = AppRouter<AppRoute>
 ### Router Integration in SwiftUI Views
 
 Use the `Router.Stack` in your SwiftUI views to implement navigation.
-Suggested to add at the root view of your app.
-Add Stacks to create nested navigation flows.
+
+- Suggested to add at the root view of your app.
+- Add Stacks to create nested navigation flows.
 
 ```swift
 Router.Stack {
@@ -57,7 +58,7 @@ Router.Stack {
 
 ### Example Navigation Implementation
 
-Implement navigation actions using `Link` or `StackController`.
+Navigate using `Link` or `StackController`.
 
 #### Using `Link`
 
@@ -87,7 +88,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             Button("Go to Profile") {
-                stackController.push(route: .profile)
+                stackController.push(route: .profile("user-id"))
             }
 
             Button("Open Settings") {
