@@ -35,8 +35,14 @@ public extension AppRouter {
         @Published
         var fullScreenCoverRoute: Route?
         
-        public init(path: NavigationPath = NavigationPath()) {
+        var dismissStack: DismissAction
+        
+        public init(
+            path: NavigationPath = NavigationPath(),
+            dismiss: DismissAction
+        ) {
             self.path = path
+            self.dismissStack = dismiss
         }
         
         public func goBack(_ count: Int = 1) {
@@ -67,6 +73,18 @@ public extension AppRouter {
         
         public func presentFullScreenCover(route: Route) {
             self.fullScreenCoverRoute = route
+        }
+        
+        public func dismiss() {
+            self.dismissStack()
+        }
+        
+        public func dismissSheet() {
+            self.sheetRoute = nil
+        }
+        
+        public func dismissFullScreenCover() {
+            self.fullScreenCoverRoute = nil
         }
     }
 }

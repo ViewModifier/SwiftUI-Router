@@ -1,9 +1,10 @@
 import SwiftUI
 
 public extension AppRouter {
-    struct Stack<Root> : View where Root : View {
-        @StateObject var stackController = AppRouter.StackController()
-        
+    struct Stack<Root>: View where Root : View {
+        @Environment(\.dismiss)
+        var dismiss
+
         @ViewBuilder
         public var root: Root
         
@@ -14,8 +15,8 @@ public extension AppRouter {
         }
         
         public var body: some View {
-            AppRouter.ObservedStack(
-                stack: self.stackController
+            AppRouter.DismissableStackWrapper(
+                dismiss: self.dismiss
             ) {
                 self.root
             }
